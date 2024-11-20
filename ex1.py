@@ -13,7 +13,7 @@ skelton =[[5,6],[6,8],[8,10],[5,7],[7,9],[5,11],[6,12],[11,12],[11,13],[13,15],[
 
 for i in range (0, 12):
     
-    cv2.line(img,(int(keypoints.data[0][skelton[i][0]][0]),int(keypoints.data[0][skelton[i][0]][1])),(int(keypoints.data[0][skelton[j][1]][0]),int(keypoints.data[0][skelton[j][1]][1])),(0,0,255),thickness=+5)  #画像　始点　終点　RGB　太さ
+    cv2.line(img,(int(keypoints.data[0][skelton[i][0]][0]),int(keypoints.data[0][skelton[i][0]][1])),(int(keypoints.data[0][skelton[1][1]][0]),int(keypoints.data[0][skelton[1][1]][1])),(0,0,255),thickness=+5)  #画像　始点　終点　RGB　太さ
 
 
 for j in range (5,17):

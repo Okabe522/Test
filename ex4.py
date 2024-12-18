@@ -19,6 +19,7 @@ model = YOLO("yolov8x-pose.pt")
 
 count = 0
 distance = 0
+distances = [] 
 
 while cap.isOpened():
     success, frame = cap.read()
@@ -30,18 +31,15 @@ while cap.isOpened():
         
         
         distance = np.linalg.norm(img_keypoints[0] - video_keypoints[0]).mean()
+        distances.append((count, distance))  # フレーム番号と距離を記録
+        
 
-        
-        
-        if distance <=50:
-            print(count)
-            break
 
         
         count = count +1   
                 
   
-  
+       
 
 
         cv2.imshow("ex3b.mp4", frame)
@@ -51,5 +49,14 @@ while cap.isOpened():
     else:
         # ビデオの終わりに到達したらループから抜ける
         break
+  
+if distances:
+    min_frame, min_distance = distances[0]
+    for frame, distance in distances:
+        if distance < min_distance:
+            min_frame, min_distance = frame, distance  
+            
+print(min_frame)   
+    
 cap.release()
 cv2.destroyAllWindows()
